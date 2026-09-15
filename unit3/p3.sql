@@ -1,0 +1,34 @@
+CREATE TABLE EMPLOYEE
+(
+    EMP_ID NUMBER(5),
+    EMP_NAME VARCHAR2(30),
+    BASIC_SAL NUMBER(10,2)
+);
+
+INSERT INTO EMPLOYEE VALUES (101, 'ANISHA', 30000);
+INSERT INTO EMPLOYEE VALUES (102, 'RIYA', 25000);
+INSERT INTO EMPLOYEE VALUES (103, 'PRIYA', 35000);
+
+COMMIT;
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    v_name EMPLOYEE.EMP_NAME%TYPE := '&Enter_Employee_Name';
+    v_salary EMPLOYEE.BASIC_SAL%TYPE;
+BEGIN
+    SELECT BASIC_SAL
+    INTO v_salary
+    FROM EMPLOYEE
+    WHERE UPPER(EMP_NAME) = UPPER(v_name);
+
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Basic Salary: ' || v_salary);
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Employee does not exist.');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Multiple employees found with this name.');
+END;
+/
