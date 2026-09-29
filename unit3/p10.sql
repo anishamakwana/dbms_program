@@ -12,7 +12,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('SQLCODE = ' || SQLCODE);
-        DBMS_OUTPUT.PUT_LINE('SQLERRM  = ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('Error Code : ' || SQLCODE);
+        DBMS_OUTPUT.PUT_LINE('Error Message : ' || SQLERRM);
 END;
 /
