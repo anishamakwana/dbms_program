@@ -1,0 +1,12 @@
+CREATE OR REPLACE PROCEDURE UPDATE_EMP
+IS
+BEGIN
+    UPDATE EMP
+    SET BASICSAL = BASICSAL + 1000
+    WHERE DEPTNO = 10;
+
+    DBMS_OUTPUT.PUT_LINE('Employee salary updated successfully.');
+
+    COMMIT;
+END;
+/
